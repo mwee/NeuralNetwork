@@ -3,9 +3,6 @@ from neural_net import Node, Target, Input
 import random
 import numpy as np
 
-
-# <--- Problem 3, Question 1 --->
-
 def FeedForward(network, input):
   """
   Arguments:
@@ -57,8 +54,6 @@ def FeedForward(network, input):
     node.transformed_value = NeuralNetwork.Sigmoid(node.raw_value) 
 
   pass
-
-#< --- Problem 3, Question 2
 
 def Backprop(network, input, target, learning_rate):
   """
@@ -141,8 +136,6 @@ def Backprop(network, input, target, learning_rate):
         network.hidden_nodes[m].forward_weights[j].value += learning_rate*network.hidden_nodes[m].transformed_value*delta[network.hidden_nodes[m].forward_neighbors[j]]
   pass
 
-# <--- Problem 3, Question 3 --->
-
 def Train(network, inputs, targets, learning_rate, epochs):
   """
   Arguments:
@@ -170,18 +163,13 @@ def Train(network, inputs, targets, learning_rate, epochs):
 
   pass
   
-
-# <--- Problem 3, Question 4 --->
-
 class EncodedNetworkFramework(NetworkFramework):
   def __init__(self):
     """
     Initializatio.
     YOU DO NOT NEED TO MODIFY THIS __init__ method
     """
-    super(EncodedNetworkFramework, self).__init__() # < Don't remove this line >
-    
-  # <--- Fill in the methods below --->
+    super(EncodedNetworkFramework, self).__init__()
 
   def EncodeLabel(self, label):
     """
@@ -208,7 +196,6 @@ class EncodedNetworkFramework(NetworkFramework):
     Make sure that the elements of the encoding are floats.
     
     """
-    # Replace line below by content of function
     enc = []
     for i in range(10): 
       enc.append(0.0)
@@ -269,7 +256,6 @@ class EncodedNetworkFramework(NetworkFramework):
     value should be 1).
     
     """
-    # Replace line below by content of function
     out = Input()
 
     for lst in image.pixels:
@@ -298,11 +284,8 @@ class EncodedNetworkFramework(NetworkFramework):
     of self.network.
     
     """
-    # replace line below by content of function
     for weight in self.network.weights:
       weight.value = random.uniform(-.01, .01)
-
-#<--- Problem 3, Question 6 --->
 
 class SimpleNetwork(EncodedNetworkFramework):
   def __init__(self):
@@ -321,7 +304,7 @@ class SimpleNetwork(EncodedNetworkFramework):
     10 output nodes, and NO hidden nodes. Each input node
     should be connected to every output node.
     """
-    super(SimpleNetwork, self).__init__() # < Don't remove this line >
+    super(SimpleNetwork, self).__init__()
     
     # 1) Adds an input node for each pixel.    
     for i in range(196):
@@ -338,9 +321,6 @@ class SimpleNetwork(EncodedNetworkFramework):
 
 
     pass
-
-
-#<---- Problem 3, Question 7 --->
 
 class HiddenNetwork(EncodedNetworkFramework):
   def __init__(self, number_of_hidden_nodes=160):
@@ -362,7 +342,7 @@ class HiddenNetwork(EncodedNetworkFramework):
     to every hidden node, and each hidden_node is connected to
     every output node.
     """
-    super(HiddenNetwork, self).__init__() # < Don't remove this line >
+    super(HiddenNetwork, self).__init__()
 
     # 1) Adds an input node for each pixel
     for i in range(196):
@@ -389,9 +369,6 @@ class HiddenNetwork(EncodedNetworkFramework):
 
     pass
     
-
-#<--- Problem 3, Question 8 ---> 
-
 class CustomNetwork(EncodedNetworkFramework):
   def __init__(self, firstlayer=15, secondlayer=15):
     """
@@ -407,7 +384,7 @@ class CustomNetwork(EncodedNetworkFramework):
     -----------
     Commented out code trains a single hidden layer with a large number of hidden units. Alternate code trains two hidden layers.
     """
-    super(CustomNetwork, self).__init__() # <Don't remove this line>
+    super(CustomNetwork, self).__init__()
 
     """
     # 1) Adds an input node for each pixel
